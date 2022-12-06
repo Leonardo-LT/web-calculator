@@ -6,6 +6,11 @@ body {
     margin: 0;
 }
 
+@font-face {
+    font-family: digital;
+    src: url(./digital-7/digital-7.ttf);
+}
+
 #container {
     width: 400px;
     height: 600px;
@@ -17,13 +22,19 @@ body {
 }
 
 #screen {
+    font-family: digital;
     margin: 15px 0;
     width: 350px;
     height: 100px;
     background-color: black;
     border-radius: 15px;
     color: white;
-    text-align: end;
+    display: flex;
+    justify-content: end;
+    align-items: center;
+    font-size: 50px;
+    color: forestgreen;
+    
 }
 
 #keyboard {
@@ -37,5 +48,12 @@ body {
 .key {
     width: 90px;
     height: 90px;
-    font-size: xx-large
+    font-size: xx-large;
+}
+
+#clear {
+    font-size: large;
+    background-color: rgb(241, 92, 92);
+    height: 60px;
+    width: 180px;
 }

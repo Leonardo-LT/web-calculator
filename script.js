@@ -1,3 +1,14 @@
+const screen = document.getElementById("screen")
+const num = document.querySelectorAll(".key.num")
+const operator = document.querySelectorAll(".key.operator")
+const equal = document.querySelectorAll(".key.equal")[0]
+const clear = document.getElementById("clear")
+
+let isOperatorClicked = false
+let operatorClicked = ""
+let firstNum = ""
+let secondNum = ""
+
 const add = (num1, num2) => {
     return num1 + num2
 }
@@ -18,19 +29,34 @@ const operate = (operator , num1 , num2) =>{
     return operator(num1 , num2)
 }
 
-const screen = document.getElementById("screen")
-const num = document.querySelectorAll(".key.num")
-const operator = document.querySelectorAll("operator")
-const equal = document.querySelectorAll("equal")
+const stringToOperator = {
+    "+" : add,
+    "-" : substract,
+    "/" : divide,
+    "*" : multiply,
+}
 
-let operatorClicked = false
-let firstNum = ""
-let secondNum = ""
+const resetCalculator = () => {
+    isOperatorClicked = false
+    operatorClicked = ""
+    firstNum = ""
+    secondNum = ""
+    screen.textContent = ""
+}
+
+const result = () => {
+    op = stringToOperator[operatorClicked]
+    let opResult =  operate(op, Number(firstNum), Number(secondNum))
+    screen.textContent = opResult
+    firstNum = opResult
+    secondNum = ""
+}
 
 for (let i = 0; i < num.length; i++) {
     const number = num[i];
+
     number.addEventListener("click", () => {
-        if (!operatorClicked) {
+        if (!isOperatorClicked) {
             firstNum += number.textContent
             screen.textContent = firstNum
         } else {
@@ -39,3 +65,26 @@ for (let i = 0; i < num.length; i++) {
         }
     })
 }
+
+for (let i = 0; i < operator.length; i++) {
+    const op = operator[i];
+
+    op.addEventListener("click", () => {
+        if (isOperatorClicked) {
+            result()
+        } else {
+            isOperatorClicked = true
+        }
+        isOperatorClicked = true
+        operatorClicked = op.textContent
+        screen.textContent += operatorClicked
+    })
+}
+
+equal.addEventListener("click", () => {
+    result()
+})
+
+clear.addEventListener("click", () => {
+    resetCalculator()
+})
