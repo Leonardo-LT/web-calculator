@@ -1,0 +1,39 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+#container {
+    width: 400px;
+    height: 600px;
+    background-color: grey;
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#screen {
+    margin: 15px 0;
+    width: 350px;
+    height: 100px;
+    background-color: black;
+    border-radius: 15px;
+}
+
+#keyboard {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 15px;
+    gap: 2px;
+}
+
+.num {
+    width: 90px;
+    height: 90px;
+    font-size: xx-large
+}
